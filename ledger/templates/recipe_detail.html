@@ -3,9 +3,32 @@
 
 
 {% block content %}
-<h4>{{ recipe.name }}</h4>
+
+{% if user.is_authenticated %}
+<h2>Recipe Detail</h2>
+<h3>{{ recipe.name }}</h3>
+
+    by: {{ recipe.author }}
+
     {% for ingredient in recipe.ingredients.all %}
         <ul>{{ ingredient.ingredient.name }} : {{ ingredient.quantity }} </ul>
     {% endfor %}
-        
+
+    <a href="/recipe/list">
+        Recipe list
+    </a>
+
+    <br>
+    <br>
+    <hr>
+    <br>
+
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Logout</button>
+    </form>
+
+{% endif %}
+
 {% endblock %}
