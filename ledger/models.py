@@ -44,3 +44,17 @@ class RecipeIngredient(models.Model):
 
     def __str__(self):
         return f'{self.ingredient} : {self.quantity} in {self.recipe}'
+
+
+class RecipeImage(models.Model):
+    description = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='images/', null=True)
+
+    recipe = models.ForeignKey(Recipe,
+                               on_delete=models.SET_NULL,
+                               null=True,
+                               related_name='images'
+                               )
+
+    def __str__(self):
+        return f'{self.description}'
