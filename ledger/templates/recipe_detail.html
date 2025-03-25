@@ -8,6 +8,8 @@
 <h3>{{ recipe.name }}</h3>
 
     by: {{ recipe.author }}
+    
+    <br>
 
     {% for image in recipe.images.all %}
         <img src="{{ image.image.url }}" alt="{{ image.description }}">
