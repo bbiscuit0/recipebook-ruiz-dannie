@@ -13,14 +13,21 @@
         {% endfor %}
     </ol>
 
-    <hr>
+    <br>
 
+    <a href="/recipe/add">
+        Add Recipe
+    </a>
+    
+    <br>
+    <br>
+    <hr>
     <br>
 
     <form method="POST" action="{% url 'logout' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Logout</button>
-        </form>
+    </form>
 
 {% endblock %}
